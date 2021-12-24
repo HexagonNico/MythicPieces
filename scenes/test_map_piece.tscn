@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://resources/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/altar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://textures/props/bush.png" type="Texture" id=3]
+
+[node name="TestMapPiece" type="Node2D"]
+
+[node name="Grass" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 32
+format = 1
+tile_data = PoolIntArray( -65538, 6, 458758, -65537, 6, 65543, -131072, 6, 65543, -131071, 6, 458759, -3, 6, 458758, -2, 6, 65543, -1, 6, 0, -65536, 6, 0, -65535, 6, 0, -65534, 6, 458759, 65533, 6, 131079, 65534, 6, 196612, 65535, 6, 0, 0, 6, 0, 1, 6, 196614, 2, 6, 0, 131071, 6, 0, 65536, 6, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Walls" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 32
+format = 1
+tile_data = PoolIntArray( -65538, 0, 65547, -65537, 0, 196613, -131072, 0, 196614, -131071, 0, 2, -3, 0, 65547, -2, 0, 196615, -1, 0, 65537, -65536, 0, 65537, -65535, 0, 196611, -65534, 0, 2, 65533, 0, 8, 65534, 0, 65537, 65535, 0, 65537, 0, 0, 65537, 1, 0, 65537, 2, 0, 9, 131069, 0, 131072, 131070, 0, 262151, 131071, 2, 65536, 65536, 2, 65537, 65537, 0, 262150, 65538, 0, 131084, 196605, 1, 65539, 196606, 1, 65540, 196607, 2, 131072, 131072, 2, 131073, 131073, 1, 65540, 131074, 1, 65541, 262143, 2, 196608, 196608, 2, 196609 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Altar" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, -14 )
+
+[node name="Bushes" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Bush1" type="Sprite" parent="Bushes"]
+position = Vector2( -38, -58 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="Bush2" type="Sprite" parent="Bushes"]
+position = Vector2( -77, -24 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 64, 0, 64, 64 )
+
+[node name="Bush3" type="Sprite" parent="Bushes"]
+position = Vector2( 72, 12 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 128, 64, 64, 64 )
