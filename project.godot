@@ -23,6 +23,11 @@ _global_script_class_icons={
 config/name="Fitting In"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=800
+window/size/height=450
+
 [gdnative]
 
 singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib" ]

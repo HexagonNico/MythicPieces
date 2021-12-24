@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/altar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://textures/props/bush.png" type="Texture" id=3]
 
-[node name="TestMapPiece" type="Node2D"]
+[node name="AltarMapPiece" type="Node2D"]
 
 [node name="Grass" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
