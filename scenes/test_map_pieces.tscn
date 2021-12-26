@@ -6,11 +6,16 @@
 
 [node name="TestMapPieces" type="Node2D"]
 
-[node name="MapPiece2" parent="." instance=ExtResource( 2 )]
+[node name="Pieces" type="YSort" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MapPiece2" parent="Pieces" instance=ExtResource( 2 )]
 position = Vector2( 384, 160 )
 
-[node name="MapPiece" parent="." instance=ExtResource( 3 )]
+[node name="MapPiece" parent="Pieces" instance=ExtResource( 3 )]
 position = Vector2( 640, 160 )
 
-[node name="AltarMapPiece" parent="." instance=ExtResource( 1 )]
+[node name="AltarMapPiece" parent="Pieces" instance=ExtResource( 1 )]
 position = Vector2( 128, 96 )

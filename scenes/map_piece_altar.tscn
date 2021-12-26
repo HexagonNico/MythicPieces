@@ -73,5 +73,14 @@ region_rect = Rect2( 128, 64, 64, 64 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SelectionArea"]
 polygon = PoolVector2Array( -96, -32, -96, 96, -32, 96, -32, 128, 32, 128, 32, 96, 96, 96, 96, -32, 64, -32, 64, -64, -64, -64, -64, -32 )
 
-[connection signal="mouse_entered" from="SelectionArea" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="SelectionArea" to="." method="_on_mouse_exited"]
+[node name="CollisionArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionArea"]
+polygon = PoolVector2Array( -88, 88, -88, 40, -56, 40, -56, 8, 48, 8, 48, 40, 88, 40, 88, 88, 24, 88, 24, 120, -24, 120, -24, 88 )
+
+[connection signal="mouse_entered" from="SelectionArea" to="." method="_on_SelectionArea_mouse_entered"]
+[connection signal="mouse_exited" from="SelectionArea" to="." method="_on_SelectionArea_mouse_exited"]
+[connection signal="area_entered" from="CollisionArea" to="." method="_on_CollisionArea_area_entered"]
+[connection signal="area_exited" from="CollisionArea" to="." method="_on_CollisionArea_area_exited"]
