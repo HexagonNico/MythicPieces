@@ -1,12 +1,22 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://resources/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/altar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://textures/props/bush.png" type="Texture" id=3]
+[ext_resource path="res://scripts/map_piece.gd" type="Script" id=4]
+[ext_resource path="res://resources/color_tint_shader.tres" type="Shader" id=5]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 5 )
+shader_param/color_multiplier = Plane( 1, 1, 1, 1 )
+shader_param/color_additive = Plane( 0, 0, 0, 0 )
 
 [node name="AltarMapPiece" type="Node2D"]
+material = SubResource( 1 )
+script = ExtResource( 4 )
 
 [node name="Grass" type="TileMap" parent="."]
+use_parent_material = true
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 32
@@ -17,6 +27,7 @@ __meta__ = {
 }
 
 [node name="Walls" type="TileMap" parent="."]
+use_parent_material = true
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 32
@@ -27,27 +38,40 @@ __meta__ = {
 }
 
 [node name="Altar" parent="." instance=ExtResource( 2 )]
+use_parent_material = true
 position = Vector2( 0, -14 )
 
 [node name="Bushes" type="Node2D" parent="."]
+use_parent_material = true
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Bush1" type="Sprite" parent="Bushes"]
+use_parent_material = true
 position = Vector2( -38, -58 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 64, 64 )
 
 [node name="Bush2" type="Sprite" parent="Bushes"]
+use_parent_material = true
 position = Vector2( -77, -24 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 64, 0, 64, 64 )
 
 [node name="Bush3" type="Sprite" parent="Bushes"]
+use_parent_material = true
 position = Vector2( 72, 12 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 128, 64, 64, 64 )
+
+[node name="SelectionArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SelectionArea"]
+polygon = PoolVector2Array( -96, -32, -96, 96, -32, 96, -32, 128, 32, 128, 32, 96, 96, 96, 96, -32, 64, -32, 64, -64, -64, -64, -64, -32 )
+
+[connection signal="mouse_entered" from="SelectionArea" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="SelectionArea" to="." method="_on_mouse_exited"]

@@ -1,17 +1,24 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://resources/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://textures/props/columns.png" type="Texture" id=2]
 [ext_resource path="res://textures/props/bush.png" type="Texture" id=3]
 [ext_resource path="res://textures/props/grass.png" type="Texture" id=4]
 [ext_resource path="res://textures/props/broken_bricks.png" type="Texture" id=5]
+[ext_resource path="res://resources/color_tint_shader.tres" type="Shader" id=6]
+[ext_resource path="res://scripts/map_piece.gd" type="Script" id=7]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 6 )
+shader_param/color_multiplier = Plane( 1, 1, 1, 1 )
+shader_param/color_additive = Plane( 0, 0, 0, 0 )
 
 [node name="MapPiece2" type="Node2D"]
-__meta__ = {
-"_edit_lock_": true
-}
+material = SubResource( 1 )
+script = ExtResource( 7 )
 
 [node name="Grass" type="TileMap" parent="."]
+use_parent_material = true
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 32
@@ -22,6 +29,7 @@ __meta__ = {
 }
 
 [node name="Walls" type="TileMap" parent="."]
+use_parent_material = true
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 32
@@ -32,11 +40,13 @@ __meta__ = {
 }
 
 [node name="YSort" type="YSort" parent="."]
+use_parent_material = true
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Column1" type="Sprite" parent="YSort"]
+use_parent_material = true
 position = Vector2( -32, -53 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -32 )
@@ -44,6 +54,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 32, 96 )
 
 [node name="Column2" type="Sprite" parent="YSort"]
+use_parent_material = true
 position = Vector2( 63, -53 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -16 )
@@ -51,78 +62,91 @@ region_enabled = true
 region_rect = Rect2( 32, 32, 32, 64 )
 
 [node name="Bush1" type="Sprite" parent="YSort"]
+use_parent_material = true
 position = Vector2( -49, -32 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 16, 16, 32, 32 )
 
 [node name="Bush2" type="Sprite" parent="YSort"]
+use_parent_material = true
 position = Vector2( 0, -51 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 136, 8, 48, 40 )
 
 [node name="Bush3" type="Sprite" parent="YSort"]
+use_parent_material = true
 position = Vector2( -52, -86 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 136, 72, 48, 48 )
 
 [node name="Bush4" type="Sprite" parent="YSort"]
+use_parent_material = true
 position = Vector2( 87, -78 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 80, 16, 32, 32 )
 
 [node name="Grass1" type="Sprite" parent="YSort"]
+use_parent_material = true
 position = Vector2( 75, -39 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 96, 8, 24, 16 )
 
 [node name="Grass2" type="Sprite" parent="YSort"]
+use_parent_material = true
 position = Vector2( 63, -39 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 72, 104, 16, 16 )
 
 [node name="Grass3" type="Sprite" parent="YSort"]
+use_parent_material = true
 position = Vector2( 113, -90 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 40, 8, 24, 16 )
 
 [node name="Grass4" type="Sprite" parent="YSort"]
+use_parent_material = true
 position = Vector2( 19, -89 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 104, 40, 16, 16 )
 
 [node name="Grass5" type="Sprite" parent="YSort"]
+use_parent_material = true
 position = Vector2( -36, -39 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 8, 104, 16, 16 )
 
 [node name="Grass6" type="Sprite" parent="YSort"]
+use_parent_material = true
 position = Vector2( 82, 18 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 8, 72, 16, 16 )
 
 [node name="Grass7" type="Sprite" parent="YSort"]
+use_parent_material = true
 position = Vector2( 104, 57 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 64, 72, 24, 16 )
 
 [node name="Grass8" type="Sprite" parent="YSort"]
+use_parent_material = true
 position = Vector2( 41, 58 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 96, 40, 24, 16 )
 
 [node name="Grass9" type="Sprite" parent="YSort"]
+use_parent_material = true
 position = Vector2( 3, 66 )
 scale = Vector2( -1, 1 )
 texture = ExtResource( 4 )
@@ -130,25 +154,41 @@ region_enabled = true
 region_rect = Rect2( 72, 104, 16, 16 )
 
 [node name="Grass10" type="Sprite" parent="YSort"]
+use_parent_material = true
 position = Vector2( -20, 67 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 72, 40, 16, 16 )
 
 [node name="Grass11" type="Sprite" parent="YSort"]
+use_parent_material = true
 position = Vector2( -63, 56 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 40, 8, 24, 16 )
 
 [node name="Bricks1" type="Sprite" parent="YSort"]
+use_parent_material = true
 position = Vector2( 73, -28 )
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 3, 9, 18, 16 )
 
 [node name="Bricks2" type="Sprite" parent="YSort"]
+use_parent_material = true
 position = Vector2( 97, -62 )
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 35, 8, 19, 16 )
+
+[node name="SelectionArea" type="Area2D" parent="."]
+collision_mask = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SelectionArea"]
+polygon = PoolVector2Array( -128, -96, -128, 128, -32, 128, -32, 160, 32, 160, 32, 128, 128, 128, 128, -96 )
+
+[connection signal="mouse_entered" from="SelectionArea" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="SelectionArea" to="." method="_on_mouse_exited"]
