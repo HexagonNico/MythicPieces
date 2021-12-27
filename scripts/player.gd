@@ -1,21 +1,26 @@
+class_name PlayerScript
 extends KinematicBody2D
 
 
-# Inspector valus
+# Exported variables
 export var speed: int = 200 # Pixels / second
-
-# Nodes
-onready var sprite: AnimatedSprite = $AnimatedSprite
 
 # Varying variables
 var input: Vector2
+var input_enabled: bool = true
+
+# Onready variables
+onready var sprite: AnimatedSprite = $AnimatedSprite
 
 
 # Called every frame
 func _process(_delta_time: float):
 	# Movement input
-	self.input.x = Input.get_axis("move_left", "move_right")
-	self.input.y = Input.get_axis("move_up", "move_down")
+	if self.input_enabled:
+		self.input.x = Input.get_axis("move_left", "move_right")
+		self.input.y = Input.get_axis("move_up", "move_down")
+	else:
+		self.input = Vector2(0, 0)
 	
 	# Animation
 	match self.input:

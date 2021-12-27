@@ -1,3 +1,4 @@
+class_name MapPiece
 extends Node2D
 
 
@@ -8,11 +9,11 @@ enum Status {
 	ERROR,
 }
 
-# Inspector variables
+# Exported variables
 export var selection_color: Color = Color(0.15, 0.15, 0.15, 1)
 export var error_color: Color = Color(0.2, 0.0, 0.0, 1)
 
-# Varying
+# Variables
 var status = Status.DEFAULT
 var drag_delta: Vector2 = Vector2(0, 0)
 var position_before: Vector2 = Vector2(0, 0)
@@ -74,3 +75,7 @@ func _on_CollisionArea_area_entered(_area: Area2D):
 func _on_CollisionArea_area_exited(_area: Area2D):
 	if self.status == Status.ERROR:
 		self.status = Status.DRAGGING
+
+func toggle(value: bool):
+	$WallsLower.set_collision_layer_bit(8, value)
+	$Walls.set_collision_layer_bit(9, value)
