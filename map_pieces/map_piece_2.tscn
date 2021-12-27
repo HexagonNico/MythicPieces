@@ -17,6 +17,8 @@ shader_param/color_additive = Plane( 0, 0, 0, 0 )
 material = SubResource( 2 )
 z_index = 3
 script = ExtResource( 7 )
+first_tile = Vector2( -4, -3 )
+tilemap_size = Vector2( 8, 8 )
 
 [node name="WallsLower" type="TileMap" parent="."]
 use_parent_material = true
@@ -56,7 +58,6 @@ __meta__ = {
 }
 
 [node name="Props" type="YSort" parent="."]
-visible = false
 use_parent_material = true
 __meta__ = {
 "_edit_lock_": true

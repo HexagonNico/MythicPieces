@@ -12,6 +12,8 @@ enum Status {
 # Exported variables
 export var selection_color: Color = Color(0.15, 0.15, 0.15, 1)
 export var error_color: Color = Color(0.2, 0.0, 0.0, 1)
+export var first_tile: Vector2
+export var tilemap_size: Vector2
 
 # Variables
 var status = Status.DEFAULT
@@ -76,6 +78,20 @@ func _on_CollisionArea_area_exited(_area: Area2D):
 	if self.status == Status.ERROR:
 		self.status = Status.DRAGGING
 
+
 func toggle(value: bool):
 	$WallsLower.set_collision_layer_bit(8, value)
 	$Walls.set_collision_layer_bit(9, value)
+
+
+func copy_tilemap(walls: TileMap, grass: TileMap, walls_lower: TileMap):
+	var this_walls: TileMap = $Walls
+	var this_grass: TileMap = $Grass
+	var this_walls_lower: TileMap = $WallsLower
+	var origin: Vector2 = self.position / 32
+	for x in range(self.first_tile.x, self.first_tile.x + self.tilemap_size.x):
+		for y in range(self.first_tile.y, self.first_tile.y + self.tilemap_size.y):
+			walls.set_cell(int(origin.x + x), int(origin.y + y), this_walls.get_cell(x, y), false, false, false, this_walls.get_cell_autotile_coord(x, y))
+			grass.set_cell(int(origin.x + x), int(origin.y + y), this_grass.get_cell(x, y), false, false, false, this_grass.get_cell_autotile_coord(x, y))
+			walls_lower.set_cell(int(origin.x + x), int(origin.y + y), this_walls_lower.get_cell(x, y), false, false, false, this_walls_lower.get_cell_autotile_coord(x, y))
+

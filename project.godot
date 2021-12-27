@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
 }, {
-"base": "Reference",
+"base": "Node2D",
 "class": "MapPiece",
 "language": "GDScript",
 "path": "res://map_pieces/map_piece.gd"
