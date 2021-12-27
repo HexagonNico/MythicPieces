@@ -14,15 +14,15 @@ _global_script_classes=[ {
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
 }, {
-"base": "Node2D",
+"base": "Reference",
 "class": "MapPiece",
 "language": "GDScript",
-"path": "res://scripts/map_piece.gd"
+"path": "res://map_pieces/map_piece.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "PlayerScript",
 "language": "GDScript",
-"path": "res://scripts/player.gd"
+"path": "res://player/player.gd"
 } ]
 _global_script_class_icons={
 "GitAPI": "",

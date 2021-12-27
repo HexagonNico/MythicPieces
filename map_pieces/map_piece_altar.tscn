@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://tilesets/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://props/altar/altar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://props/textures/bush.png" type="Texture" id=3]
+[ext_resource path="res://map_pieces/map_piece.gd" type="Script" id=4]
+[ext_resource path="res://props/color_tint_shader.tres" type="Shader" id=5]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 5 )
+shader_param/color_multiplier = Plane( 1, 1, 1, 1 )
+shader_param/color_additive = Plane( 0, 0, 0, 0 )
+
+[node name="AltarMapPiece" type="Node2D"]
+material = SubResource( 1 )
+script = ExtResource( 4 )
+
+[node name="Grass" type="TileMap" parent="."]
+use_parent_material = true
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 32
+format = 1
+tile_data = PoolIntArray( -65538, 6, 458758, -65537, 6, 65543, -131072, 6, 65543, -131071, 6, 458759, -3, 6, 458758, -2, 6, 65543, -1, 6, 0, -65536, 6, 0, -65535, 6, 0, -65534, 6, 458759, 65533, 6, 131079, 65534, 6, 196612, 65535, 6, 0, 0, 6, 0, 1, 6, 196614, 2, 6, 0, 131071, 6, 0, 65536, 6, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Walls" type="TileMap" parent="."]
+use_parent_material = true
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 32
+format = 1
+tile_data = PoolIntArray( -65538, 0, 65547, -65537, 0, 196613, -131072, 0, 196614, -131071, 0, 2, -3, 0, 65547, -2, 0, 196615, -1, 0, 65537, -65536, 0, 65537, -65535, 0, 196611, -65534, 0, 2, 65533, 0, 8, 65534, 0, 65537, 65535, 0, 65537, 0, 0, 65537, 1, 0, 65537, 2, 0, 9, 131069, 0, 131072, 131070, 0, 262151, 131071, 2, 65536, 65536, 2, 65537, 65537, 0, 262150, 65538, 0, 131084, 196605, 1, 65539, 196606, 1, 65540, 196607, 2, 131072, 131072, 2, 131073, 131073, 1, 65540, 131074, 1, 65541, 262143, 2, 196608, 196608, 2, 196609 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Altar" parent="." instance=ExtResource( 2 )]
+use_parent_material = true
+position = Vector2( 0, -14 )
+
+[node name="Bushes" type="Node2D" parent="."]
+use_parent_material = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Bush1" type="Sprite" parent="Bushes"]
+use_parent_material = true
+position = Vector2( -38, -58 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="Bush2" type="Sprite" parent="Bushes"]
+use_parent_material = true
+position = Vector2( -77, -24 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 64, 0, 64, 64 )
+
+[node name="Bush3" type="Sprite" parent="Bushes"]
+use_parent_material = true
+position = Vector2( 72, 12 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 128, 64, 64, 64 )
+
+[node name="SelectionArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SelectionArea"]
+polygon = PoolVector2Array( -96, -32, -96, 96, -32, 96, -32, 128, 32, 128, 32, 96, 96, 96, 96, -32, 64, -32, 64, -64, -64, -64, -64, -32 )
+
+[node name="CollisionArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionArea"]
+polygon = PoolVector2Array( -88, 88, -88, 40, -56, 40, -56, 8, 48, 8, 48, 40, 88, 40, 88, 88, 24, 88, 24, 120, -24, 120, -24, 88 )
+
+[connection signal="mouse_entered" from="SelectionArea" to="." method="_on_SelectionArea_mouse_entered"]
+[connection signal="mouse_exited" from="SelectionArea" to="." method="_on_SelectionArea_mouse_exited"]
+[connection signal="area_entered" from="CollisionArea" to="." method="_on_CollisionArea_area_entered"]
+[connection signal="area_exited" from="CollisionArea" to="." method="_on_CollisionArea_area_exited"]
