@@ -14,9 +14,11 @@ __meta__ = {
 tilemap_size = Vector2( 27, 35 )
 
 [node name="Tilemap" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="GrassBottomLayer" type="TileMap" parent="Tilemap"]
-visible = false
 z_index = -3
 tile_set = ExtResource( 11 )
 cell_size = Vector2( 32, 32 )
