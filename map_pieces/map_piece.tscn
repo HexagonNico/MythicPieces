@@ -12,14 +12,19 @@ shader = ExtResource( 6 )
 shader_param/color_multiplier = Plane( 1, 1, 1, 1 )
 shader_param/color_additive = Plane( 0, 0, 0, 0 )
 
-[node name="MapPiece" type="Node2D"]
+[node name="MapPiece" type="YSort"]
 material = SubResource( 1 )
 z_index = 3
 script = ExtResource( 5 )
-first_tile = Vector2( -2, -3 )
 tilemap_size = Vector2( 4, 7 )
 
-[node name="WallsLower" type="TileMap" parent="."]
+[node name="Tilemap" type="Node2D" parent="."]
+use_parent_material = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="WallsLower" type="TileMap" parent="Tilemap"]
 use_parent_material = true
 tile_set = ExtResource( 7 )
 cell_size = Vector2( 32, 32 )
@@ -27,23 +32,23 @@ cell_quadrant_size = 32
 collision_layer = 256
 collision_mask = 256
 format = 1
-tile_data = PoolIntArray( -65538, 7, 262144, -65537, 7, 262145, -131072, 7, 262145, -131071, 7, 262146, -2, 7, 0, -1, 7, 4, -65536, 7, 1, -65535, 7, 131077, 65534, 7, 0, 65535, 7, 1, 0, 7, 131076, 1, 7, 131077, 131070, 7, 131072, 131071, 7, 131076, 65536, 7, 131073, 65537, 7, 5, 196606, 7, 131072, 196607, 7, 131073, 131072, 7, 4, 131073, 7, 5, 262142, 7, 65536, 262143, 7, 65539, 196608, 7, 196612, 196609, 7, 196613 )
+tile_data = PoolIntArray( 65536, 7, 262144, 65537, 7, 262145, 65538, 7, 262145, 65539, 7, 262146, 131072, 7, 0, 131073, 7, 4, 131074, 7, 1, 131075, 7, 131077, 196608, 7, 0, 196609, 7, 1, 196610, 7, 131076, 196611, 7, 131077, 262144, 7, 131072, 262145, 7, 131076, 262146, 7, 131073, 262147, 7, 5, 327680, 7, 131072, 327681, 7, 131073, 327682, 7, 4, 327683, 7, 5, 393216, 7, 65536, 393217, 7, 65539, 393218, 7, 196612, 393219, 7, 196613 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Grass" type="TileMap" parent="."]
+[node name="Grass" type="TileMap" parent="Tilemap"]
 use_parent_material = true
 tile_set = ExtResource( 7 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 32
 format = 1
-tile_data = PoolIntArray( -131074, 3, 458758, -131073, 3, 0, -196608, 3, 0, -196607, 3, 458759, -65538, 3, 0, -65537, 3, 0, -131072, 3, 0, -131071, 3, 0, -2, 3, 0, -1, 3, 0, -65536, 3, 0, -65535, 3, 0, 65534, 3, 0, 65535, 3, 0, 0, 3, 0, 1, 3, 0, 131070, 3, 0, 131071, 3, 0, 65536, 3, 0, 65537, 3, 0 )
+tile_data = PoolIntArray( 0, 3, 458758, 1, 3, 0, 2, 3, 0, 3, 3, 458759, 65536, 3, 262148, 65537, 3, 393220, 65538, 3, 131073, 65539, 3, 0, 131072, 3, 327684, 131073, 3, 327680, 131074, 3, 458757, 131075, 3, 0, 196608, 3, 0, 196609, 3, 458753, 196610, 3, 327680, 196611, 3, 458755, 262144, 3, 0, 262145, 3, 0, 262146, 3, 262146, 262147, 3, 262147 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Walls" type="TileMap" parent="."]
+[node name="Walls" type="TileMap" parent="Tilemap"]
 use_parent_material = true
 tile_set = ExtResource( 7 )
 cell_size = Vector2( 32, 32 )
@@ -51,7 +56,25 @@ cell_quadrant_size = 32
 collision_layer = 512
 collision_mask = 512
 format = 1
-tile_data = PoolIntArray( -131074, 2, 0, -131073, 2, 131076, -196608, 2, 131077, -196607, 2, 1, -65538, 2, 327690, -65537, 2, 327686, -131072, 2, 327686, -131071, 2, 9, -2, 2, 196618, -1, 2, 327686, -65536, 2, 327686, -65535, 2, 9, 65534, 2, 10, 65535, 2, 327686, 0, 2, 327686, 1, 2, 196617, 131070, 2, 262154, 131071, 2, 327686, 65536, 2, 327686, 65537, 2, 9, 196606, 2, 65536, 196607, 2, 196608, 131072, 2, 196612, 131073, 2, 65539 )
+tile_data = PoolIntArray( 0, 2, 0, 1, 2, 131076, 2, 2, 131077, 3, 2, 1, 65536, 2, 327690, 65537, 2, 327686, 65538, 2, 327686, 65539, 2, 9, 131072, 2, 196618, 131073, 2, 327686, 131074, 2, 327686, 131075, 2, 9, 196608, 2, 10, 196609, 2, 327686, 196610, 2, 327686, 196611, 2, 196617, 262144, 2, 262154, 262145, 2, 327686, 262146, 2, 327686, 262147, 2, 9, 327680, 2, 65536, 327681, 2, 196608, 327682, 2, 196612, 327683, 2, 65539 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="OverlayUpper" type="TileMap" parent="Tilemap"]
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 32
+format = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="OverlayLower" type="TileMap" parent="Tilemap"]
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 32
+format = 1
 __meta__ = {
 "_edit_lock_": true
 }
@@ -64,56 +87,62 @@ __meta__ = {
 
 [node name="Bush1" type="Sprite" parent="Props"]
 use_parent_material = true
-position = Vector2( -42, -78 )
+position = Vector2( 160, 144 )
 texture = ExtResource( 2 )
+offset = Vector2( 0, -16 )
 region_enabled = true
-region_rect = Rect2( 136, 80, 48, 40 )
+region_rect = Rect2( 140, 80, 40, 35 )
 
 [node name="Bush2" type="Sprite" parent="Props"]
 use_parent_material = true
-position = Vector2( -35, 43 )
+position = Vector2( 29, 153 )
 texture = ExtResource( 2 )
+offset = Vector2( 0, -16 )
 region_enabled = true
-region_rect = Rect2( 8, 72, 48, 48 )
+region_rect = Rect2( 9, 74, 47, 42 )
 
 [node name="Bush3" type="Sprite" parent="Props"]
 use_parent_material = true
-position = Vector2( 3, 47 )
+position = Vector2( 64, 153 )
 texture = ExtResource( 2 )
+offset = Vector2( 0, -8 )
 region_enabled = true
-region_rect = Rect2( 16, 16, 32, 32 )
+region_rect = Rect2( 21, 22, 22, 19 )
 
 [node name="Bush4" type="Sprite" parent="Props"]
 use_parent_material = true
-position = Vector2( -39, 16 )
+position = Vector2( 21, 127 )
 texture = ExtResource( 2 )
+offset = Vector2( 0, -12 )
 region_enabled = true
-region_rect = Rect2( 80, 16, 32, 32 )
+region_rect = Rect2( 81, 21, 27, 25 )
 
 [node name="Bush5" type="Sprite" parent="Props"]
 use_parent_material = true
-position = Vector2( 43, -57 )
+position = Vector2( 100, 31 )
 texture = ExtResource( 2 )
+offset = Vector2( 0, -8 )
 region_enabled = true
-region_rect = Rect2( 16, 16, 32, 32 )
+region_rect = Rect2( 21, 22, 22, 19 )
 
 [node name="Column" type="Sprite" parent="Props"]
 use_parent_material = true
-position = Vector2( 1, -86 )
+position = Vector2( 59, 32 )
 texture = ExtResource( 3 )
+offset = Vector2( 0, -24 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 32, 96 )
+region_rect = Rect2( 0, 19, 32, 77 )
 
 [node name="Grass1" type="Sprite" parent="Props"]
 use_parent_material = true
-position = Vector2( 8, -40 )
+position = Vector2( 71, 44 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 72, 40, 16, 16 )
 
 [node name="Grass2" type="Sprite" parent="Props"]
 use_parent_material = true
-position = Vector2( 20, -51 )
+position = Vector2( 79, 35 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 8, 104, 16, 16 )
@@ -124,7 +153,10 @@ __meta__ = {
 }
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SelectionArea"]
-polygon = PoolVector2Array( -64, -96, -64, 128, 64, 128, 64, -96 )
+polygon = PoolVector2Array( 0, 0, 0, 224, 128, 224, 128, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionArea" type="Area2D" parent="."]
 collision_layer = 2
@@ -134,25 +166,7 @@ __meta__ = {
 }
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionArea"]
-polygon = PoolVector2Array( -56, 120, -56, -24, 56, -24, 56, 120 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="StairsUpper" type="TileMap" parent="."]
-tile_set = ExtResource( 7 )
-cell_size = Vector2( 32, 32 )
-cell_quadrant_size = 32
-format = 1
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="StairsLower" type="TileMap" parent="."]
-tile_set = ExtResource( 7 )
-cell_size = Vector2( 32, 32 )
-cell_quadrant_size = 32
-format = 1
+polygon = PoolVector2Array( 8, 216, 8, 48, 120, 48, 120, 216 )
 __meta__ = {
 "_edit_lock_": true
 }

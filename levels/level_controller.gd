@@ -12,9 +12,9 @@ onready var player: PlayerScript = $Player
 onready var player_camera: Camera2D = $Player/PlayerCamera
 onready var wide_camera: Camera2D = $WideCamera
 onready var map_pieces: YSort = $MapPieces
-onready var tilemap_walls: TileMap = $Tilemap/WallsAbove
-onready var tilemap_grass: TileMap = $Tilemap/GrassAbove
-onready var tilemap_walls_lower: TileMap = $Tilemap/WallsLower
+onready var tilemap_walls: TileMap
+onready var tilemap_grass: TileMap
+onready var tilemap_walls_lower: TileMap
 
 
 func _ready():
@@ -41,7 +41,6 @@ func _input(event: InputEvent):
 func toggle_map_pieces(value: bool):
 	for piece in self.map_pieces.get_children():
 		piece.toggle(value)
-	self.map_pieces.visible = value
 
 
 func copy_tilemap():

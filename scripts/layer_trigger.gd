@@ -1,7 +1,15 @@
 extends Area2D
 
 
-func _on_Temporary_body_entered(body: CollisionObject2D):
-	body.set_collision_mask_bit(9, body.position.y > self.position.y)
-	body.set_collision_mask_bit(8, body.position.y < self.position.y)
-	body.z_index = 3 if body.position.y > self.position.y else 0
+# Exported variables
+export var upper_collision_layer: int = 9
+export var lower_collision_layer: int = 8
+export var upper_z_index: int = 3
+export var lower_z_index: int = 0
+
+
+func _on_LayerTrigger_body_exited(body: KinematicBody2D):
+	body.set_collision_mask_bit(self.upper_collision_layer, body.global_position.y < self.global_position.y)
+	body.set_collision_mask_bit(self.lower_collision_layer, body.global_position.y > self.global_position.y)
+	body.z_index = self.upper_z_index if body.global_position.y < self.global_position.y else self.lower_z_index
+	print(str(self.global_position) + " " + str(body.global_position))

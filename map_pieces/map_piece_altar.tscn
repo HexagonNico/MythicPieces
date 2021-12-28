@@ -17,7 +17,12 @@ script = ExtResource( 4 )
 first_tile = Vector2( -3, -2 )
 tilemap_size = Vector2( 6, 6 )
 
-[node name="WallsLower" type="TileMap" parent="."]
+[node name="Tilemap" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="WallsLower" type="TileMap" parent="Tilemap"]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 32
@@ -29,7 +34,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Grass" type="TileMap" parent="."]
+[node name="Grass" type="TileMap" parent="Tilemap"]
 use_parent_material = true
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
@@ -40,7 +45,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Walls" type="TileMap" parent="."]
+[node name="Walls" type="TileMap" parent="Tilemap"]
 use_parent_material = true
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
@@ -53,7 +58,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="StairsUpper" type="TileMap" parent="."]
+[node name="OverlayUpper" type="TileMap" parent="Tilemap"]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 32
@@ -63,7 +68,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="StairsLower" type="TileMap" parent="."]
+[node name="OverlayLower" type="TileMap" parent="Tilemap"]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 32
