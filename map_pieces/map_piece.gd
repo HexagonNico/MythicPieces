@@ -95,3 +95,16 @@ func copy_tilemap(walls: TileMap, grass: TileMap, walls_lower: TileMap):
 			grass.set_cell(int(origin.x + x), int(origin.y + y), this_grass.get_cell(x, y), false, false, false, this_grass.get_cell_autotile_coord(x, y))
 			walls_lower.set_cell(int(origin.x + x), int(origin.y + y), this_walls_lower.get_cell(x, y), false, false, false, this_walls_lower.get_cell_autotile_coord(x, y))
 
+
+func copy_overlay_tilemap(overlay_above: TileMap, overlay_below: TileMap):
+	var this_overlay_below: TileMap = $StairsLower
+	var this_overlay_above: TileMap = $StairsUpper
+	var origin: Vector2 = self.position / 32
+	for x in range(self.first_tile.x, self.first_tile.x + self.tilemap_size.x):
+		for y in range(self.first_tile.y, self.first_tile.y + self.tilemap_size.y):
+			var tile_below = this_overlay_below.get_cell(x, y)
+			if tile_below != -1:
+				overlay_below.set_cell(int(origin.x + x), int(origin.y + y), tile_below, false, false, false, this_overlay_below.get_cell_autotile_coord(x, y))
+			var tile_above = this_overlay_above.get_cell(x, y)
+			if tile_above != -1:
+				overlay_above.set_cell(int(origin.x + x), int(origin.y + y), tile_above, false, false, false, this_overlay_above.get_cell_autotile_coord(x, y))

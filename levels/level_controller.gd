@@ -48,6 +48,9 @@ func copy_tilemap():
 	for piece in self.map_pieces.get_children():
 		piece.copy_tilemap(self.tilemap_walls, self.tilemap_grass, self.tilemap_walls_lower)
 	self.tilemap_walls.update_bitmask_region(Vector2.ZERO, self.tilemap_size)
+	self.tilemap_walls_lower.update_bitmask_region(Vector2.ZERO, self.tilemap_size)
+	for piece in self.map_pieces.get_children():
+		piece.copy_overlay_tilemap(self.tilemap_walls, self.tilemap_walls_lower)
 
 
 func erease_tilemap():

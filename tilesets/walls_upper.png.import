@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/walls.png-34abef636e328a60e95ce455dd97b3d3.stex"
+path="res://.import/walls_upper.png-0aa5bb0d3810b5cb8f673b4962ffc2ec.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilesets/textures/walls.png"
-dest_files=[ "res://.import/walls.png-34abef636e328a60e95ce455dd97b3d3.stex" ]
+source_file="res://tilesets/walls_upper.png"
+dest_files=[ "res://.import/walls_upper.png-0aa5bb0d3810b5cb8f673b4962ffc2ec.stex" ]
 
 [params]
 
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

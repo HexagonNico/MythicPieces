@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/stairs.png-9addaf41f82bf3f8742d8ef2e725e25b.stex"
+path="res://.import/stairs.png-d70edc3c167db1433fe72861c3deeacb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilesets/textures/stairs.png"
-dest_files=[ "res://.import/stairs.png-9addaf41f82bf3f8742d8ef2e725e25b.stex" ]
+source_file="res://tilesets/stairs.png"
+dest_files=[ "res://.import/stairs.png-d70edc3c167db1433fe72861c3deeacb.stex" ]
 
 [params]
 
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
