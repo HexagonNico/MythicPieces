@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
+[ext_resource path="res://scripts/clear_tilemap.gd" type="Script" id=1]
 [ext_resource path="res://map_pieces/map_piece.tscn" type="PackedScene" id=2]
 [ext_resource path="res://map_pieces/map_piece_2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://map_pieces/pieces_controller.gd" type="Script" id=5]
 [ext_resource path="res://tilesets/tileset.tres" type="TileSet" id=11]
 
 [node name="TestLevel" type="Node2D"]
@@ -15,11 +17,11 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="WallsLower" type="TileMap" parent="Layer1"]
+[node name="WallsLowest" type="TileMap" parent="Layer1"]
 tile_set = ExtResource( 11 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 32
-collision_layer = 256
+collision_layer = 0
 collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 1572886, 7, 262144, 1572887, 7, 262145, 1572888, 7, 262145, 1572889, 7, 262145, 1572890, 7, 262145, 1572891, 7, 262146, 1638422, 7, 0, 1638423, 7, 131073, 1638424, 7, 1, 1638425, 7, 131073, 1638426, 7, 131073, 1638427, 7, 131077, 1703958, 7, 65536, 1703959, 7, 196610, 1703960, 7, 65539, 1703961, 7, 65538, 1703962, 7, 65540, 1703963, 7, 65541, 2162689, 7, 262144, 2162690, 7, 262145, 2162691, 7, 262145, 2162692, 7, 262145, 2162693, 7, 262145, 2162694, 7, 262145, 2162695, 7, 262145, 2162696, 7, 262145, 2162697, 7, 262145, 2162698, 7, 262145, 2162699, 7, 262145, 2162700, 7, 262146, 2162709, 7, 262144, 2162710, 7, 262145, 2162711, 7, 262145, 2162712, 7, 262146, 2228225, 7, 0, 2228226, 7, 131076, 2228227, 7, 131076, 2228228, 7, 131073, 2228229, 7, 131073, 2228230, 7, 131073, 2228231, 7, 131073, 2228232, 7, 1, 2228233, 7, 1, 2228234, 7, 131073, 2228235, 7, 131076, 2228236, 7, 131074, 2228237, 7, 262145, 2228238, 7, 262145, 2228239, 7, 262145, 2228240, 7, 262145, 2228241, 7, 262145, 2228242, 7, 262145, 2228243, 7, 262145, 2228244, 7, 262145, 2228245, 7, 3, 2228246, 7, 131076, 2228247, 7, 1, 2228248, 7, 5, 2293761, 7, 65536, 2293762, 7, 196611, 2293763, 7, 196609, 2293764, 7, 196610, 2293765, 7, 65539, 2293766, 7, 65537, 2293767, 7, 196611, 2293768, 7, 65538, 2293769, 7, 65538, 2293770, 7, 65539, 2293771, 7, 65539, 2293772, 7, 196611, 2293773, 7, 0, 2293774, 7, 131073, 2293775, 7, 4, 2293776, 7, 1, 2293777, 7, 131076, 2293778, 7, 131073, 2293779, 7, 1, 2293780, 7, 0, 2293781, 7, 196611, 2293782, 7, 65540, 2293783, 7, 196612, 2293784, 7, 65541, 2359309, 7, 131072, 2359310, 7, 131073, 2359311, 7, 4, 2359312, 7, 4, 2359313, 7, 4, 2359314, 7, 131073, 2359315, 7, 131076, 2359316, 7, 131077, 2424845, 7, 196608, 2424846, 7, 196609, 2424847, 7, 65537, 2424848, 7, 196612, 2424849, 7, 196610, 2424850, 7, 196611, 2424851, 7, 196609, 2424852, 7, 65541 )
@@ -39,7 +41,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="WallsUpper" type="TileMap" parent="Layer1"]
+[node name="WallsBorder" type="TileMap" parent="Layer1"]
 tile_set = ExtResource( 11 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 32
@@ -51,6 +53,18 @@ tile_data = PoolIntArray( 393224, 2, 2, 393225, 2, 131073, 393226, 2, 131073, 39
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="WallsUpper" type="TileMap" parent="Layer1"]
+tile_set = ExtResource( 11 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 256
+collision_mask = 0
+format = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+tilemap_size = Vector2( 28, 38 )
 
 [node name="Player" parent="Layer1" instance=ExtResource( 4 )]
 position = Vector2( 584, 672 )
@@ -65,20 +79,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="WideCamera" type="Camera2D" parent="Layer1"]
-position = Vector2( 447, 622 )
-
 [node name="Layer2" type="YSort" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="WallsLower" type="TileMap" parent="Layer2"]
-tile_set = ExtResource( 11 )
-cell_size = Vector2( 32, 32 )
-collision_layer = 256
-collision_mask = 0
-format = 1
 __meta__ = {
 "_edit_lock_": true
 }
@@ -89,28 +90,39 @@ cell_size = Vector2( 32, 32 )
 collision_layer = 0
 collision_mask = 0
 format = 1
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
+tilemap_size = Vector2( 28, 38 )
 
-[node name="WallsUpper" type="TileMap" parent="Layer2"]
+[node name="WallsBorder" type="TileMap" parent="Layer2"]
 tile_set = ExtResource( 11 )
 cell_size = Vector2( 32, 32 )
 collision_layer = 512
 collision_mask = 0
 format = 1
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
+tilemap_size = Vector2( 28, 38 )
 
-[node name="MapPieces" type="YSort" parent="Layer2"]
+[node name="MapPieces" type="YSort" parent="."]
 z_index = 3
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="MapPiece" parent="Layer2/MapPieces" instance=ExtResource( 2 )]
-position = Vector2( 704, 400 )
+[node name="MapPiece" parent="MapPieces" instance=ExtResource( 2 )]
+position = Vector2( 640, 448 )
 
-[node name="MapPiece2" parent="Layer2/MapPieces" instance=ExtResource( 3 )]
-position = Vector2( 384, 400 )
+[node name="MapPiece2" parent="MapPieces" instance=ExtResource( 3 )]
+position = Vector2( 320, 448 )
+
+[connection signal="activate" from="MapPieces" to="Layer1/WallsUpper" method="clear"]
+[connection signal="activate" from="MapPieces" to="Layer1/Player" method="_on_MapPieces_activate"]
+[connection signal="activate" from="MapPieces" to="Layer2/Grass" method="clear"]
+[connection signal="activate" from="MapPieces" to="Layer2/WallsBorder" method="clear"]
+[connection signal="deactivate" from="MapPieces" to="Layer1/Player" method="_on_MapPieces_deactivate"]

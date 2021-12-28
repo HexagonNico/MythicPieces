@@ -51,3 +51,13 @@ func _physics_process(_delta_time: float):
 	# Movement
 	var velocity : Vector2 = self.input.normalized() * self.speed
 	self.move_and_slide(velocity)
+
+
+func _on_MapPieces_activate():
+	$PlayerCamera.zoom = Vector2.ONE
+	self.input_enabled = false
+
+
+func _on_MapPieces_deactivate():
+	$PlayerCamera.zoom = Vector2.ONE / 2
+	self.input_enabled = true
