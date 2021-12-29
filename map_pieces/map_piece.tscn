@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://props/textures/bush.png" type="Texture" id=2]
 [ext_resource path="res://props/textures/columns.png" type="Texture" id=3]
@@ -11,6 +11,9 @@
 shader = ExtResource( 6 )
 shader_param/color_multiplier = Plane( 1, 1, 1, 1 )
 shader_param/color_additive = Plane( 0, 0, 0, 0 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 13 )
 
 [node name="MapPiece" type="YSort"]
 material = SubResource( 1 )
@@ -162,6 +165,20 @@ texture = ExtResource( 3 )
 offset = Vector2( 0, -24 )
 region_enabled = true
 region_rect = Rect2( 0, 19, 32, 77 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Props/Column"]
+collision_layer = 16
+collision_mask = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Props/Column/StaticBody2D"]
+position = Vector2( 0, 1 )
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Grass1" type="Sprite" parent="Props"]
 use_parent_material = true

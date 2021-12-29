@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://tilesets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://props/textures/columns.png" type="Texture" id=2]
@@ -12,6 +12,9 @@
 shader = ExtResource( 6 )
 shader_param/color_multiplier = Plane( 1, 1, 1, 1 )
 shader_param/color_additive = Plane( 0, 0, 0, 0 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 16, 13.5 )
 
 [node name="MapPiece2" type="YSort"]
 material = SubResource( 2 )
@@ -129,6 +132,20 @@ offset = Vector2( 0, -32 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 96 )
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Props/Column1"]
+collision_layer = 16
+collision_mask = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Props/Column1/StaticBody2D"]
+position = Vector2( 0, 2.5 )
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Column2" type="Sprite" parent="Props"]
 use_parent_material = true
 position = Vector2( 192, 43 )
@@ -136,6 +153,20 @@ texture = ExtResource( 2 )
 offset = Vector2( 0, -16 )
 region_enabled = true
 region_rect = Rect2( 32, 32, 32, 64 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Props/Column2"]
+collision_layer = 16
+collision_mask = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Props/Column2/StaticBody2D"]
+position = Vector2( 0, 2.5 )
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Bush1" type="Sprite" parent="Props"]
 use_parent_material = true
