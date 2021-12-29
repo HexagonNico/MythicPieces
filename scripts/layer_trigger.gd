@@ -4,11 +4,22 @@ extends Area2D
 # Exported variables
 export var upper_collision_layer: int = 9
 export var lower_collision_layer: int = 8
-export var upper_z_index: int = 3
-export var lower_z_index: int = 0
+export var upper_layer_y_sort_path: NodePath
+export var lower_layer_y_sort_path: NodePath
 
-# TODO - This needs to change because we are no longer using Z indexes
+# Onready variables
+onready var upper_layer_y_sort: YSort = self.get_node(self.upper_layer_y_sort_path)
+onready var lower_layer_y_sort: YSort = self.get_node(self.lower_layer_y_sort_path)
+
+
 func _on_LayerTrigger_body_exited(body: KinematicBody2D):
-	body.set_collision_mask_bit(self.upper_collision_layer, body.global_position.y < self.global_position.y)
-	body.set_collision_mask_bit(self.lower_collision_layer, body.global_position.y > self.global_position.y)
-	body.z_index = self.upper_z_index if body.global_position.y < self.global_position.y else self.lower_z_index
+	if body.global_position.y < self.global_position.y:
+		body.set_collision_mask_bit(self.upper_collision_layer, true)
+		body.set_collision_mask_bit(self.lower_collision_layer, false)
+		self.lower_layer_y_sort.remove_child(body)
+		self.upper_layer_y_sort.add_child(body)
+	else:
+		body.set_collision_mask_bit(self.lower_collision_layer, true)
+		body.set_collision_mask_bit(self.upper_collision_layer, false)
+		self.upper_layer_y_sort.remove_child(body)
+		self.lower_layer_y_sort.add_child(body)
