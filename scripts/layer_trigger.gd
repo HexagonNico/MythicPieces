@@ -17,9 +17,9 @@ func _on_LayerTrigger_body_exited(body: KinematicBody2D):
 		body.set_collision_mask_bit(self.upper_collision_layer, true)
 		body.set_collision_mask_bit(self.lower_collision_layer, false)
 		self.lower_layer_y_sort.remove_child(body)
-		self.upper_layer_y_sort.add_child(body)
+		self.upper_layer_y_sort.call_deferred("add_child", body)
 	else:
 		body.set_collision_mask_bit(self.lower_collision_layer, true)
 		body.set_collision_mask_bit(self.upper_collision_layer, false)
 		self.upper_layer_y_sort.remove_child(body)
-		self.lower_layer_y_sort.add_child(body)
+		self.lower_layer_y_sort.call_deferred("add_child", body)

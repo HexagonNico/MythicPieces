@@ -29,12 +29,13 @@ __meta__ = {
 }
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionArea"]
-polygon = PoolVector2Array( 8, 216, 8, 48, 120, 48, 120, 216 )
+polygon = PoolVector2Array( 8, 216, 8, 72, 120, 72, 120, 216 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="SelectionArea" type="Area2D" parent="."]
+collision_mask = 0
 __meta__ = {
 "_edit_lock_": true
 }

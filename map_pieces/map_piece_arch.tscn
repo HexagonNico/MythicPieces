@@ -1,0 +1,119 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://tilesets/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://map_pieces/map_piece.gd" type="Script" id=2]
+[ext_resource path="res://props/color_tint_shader.tres" type="Shader" id=3]
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 3 )
+shader_param/color_multiplier = Plane( 1, 1, 1, 1 )
+shader_param/color_additive = Plane( 0, 0, 0, 0 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 64 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 24, 56 )
+
+[node name="MapPieceArch" type="YSort"]
+material = SubResource( 3 )
+script = ExtResource( 2 )
+tilemap_size = Vector2( 2, 4 )
+
+[node name="SelectionArea" type="Area2D" parent="."]
+collision_mask = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectionArea"]
+position = Vector2( 32, 64 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+position = Vector2( 32, 96 )
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Tilemap" type="Node2D" parent="."]
+use_parent_material = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="WallsLower" type="TileMap" parent="Tilemap"]
+use_parent_material = true
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 65536, 7, 262144, 65537, 7, 262146, 131072, 7, 0, 131073, 7, 5, 196608, 7, 65536, 196609, 7, 196613 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Grass" type="TileMap" parent="Tilemap"]
+use_parent_material = true
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 0, 3, 262148, 1, 3, 262151, 65536, 3, 327687, 65537, 3, 131073 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Walls" type="TileMap" parent="Tilemap"]
+use_parent_material = true
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 0, 2, 0, 1, 2, 1, 65536, 2, 131082, 65537, 2, 196617, 131072, 2, 65536, 131073, 2, 65539 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="OverlayUpper" type="TileMap" parent="Tilemap"]
+use_parent_material = true
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 131072, 6, 131072, 131073, 6, 131073 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="OverlayLower" type="TileMap" parent="Tilemap"]
+use_parent_material = true
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 65536, 8, 0, 65537, 8, 1, 131072, 8, 0, 131073, 8, 1, 196608, 6, 196608, 196609, 6, 196609 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="mouse_entered" from="SelectionArea" to="." method="_on_SelectionArea_mouse_entered"]
+[connection signal="mouse_exited" from="SelectionArea" to="." method="_on_SelectionArea_mouse_exited"]
+[connection signal="area_entered" from="CollisionArea" to="." method="_on_CollisionArea_area_entered"]
+[connection signal="area_exited" from="CollisionArea" to="." method="_on_CollisionArea_area_exited"]

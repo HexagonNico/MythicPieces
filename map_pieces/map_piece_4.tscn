@@ -1,0 +1,237 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://tilesets/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://props/textures/columns.png" type="Texture" id=2]
+[ext_resource path="res://props/textures/bush.png" type="Texture" id=3]
+[ext_resource path="res://props/textures/grass.png" type="Texture" id=4]
+[ext_resource path="res://map_pieces/map_piece.gd" type="Script" id=5]
+[ext_resource path="res://props/color_tint_shader.tres" type="Shader" id=6]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 6 )
+shader_param/color_multiplier = Plane( 1, 1, 1, 1 )
+shader_param/color_additive = Plane( 0, 0, 0, 0 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 13.5 )
+
+[node name="MapPiece4" type="YSort"]
+material = SubResource( 2 )
+script = ExtResource( 5 )
+tilemap_size = Vector2( 6, 14 )
+
+[node name="SelectionArea" type="Area2D" parent="."]
+collision_mask = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SelectionArea"]
+polygon = PoolVector2Array( 64, 0, 128, 0, 128, 32, 192, 32, 192, 192, 128, 192, 128, 448, 64, 448, 64, 256, 0, 256, 0, 96, 64, 96 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionArea"]
+polygon = PoolVector2Array( 8, 248, 72, 248, 72, 440, 120, 440, 120, 184, 184, 184, 184, 104, 120, 104, 120, 72, 72, 72, 72, 168, 8, 168 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Tilemap" type="Node2D" parent="."]
+use_parent_material = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="WallsLower" type="TileMap" parent="Tilemap"]
+use_parent_material = true
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 65538, 7, 262144, 65539, 7, 262146, 131074, 7, 131072, 131075, 7, 131074, 131076, 7, 262145, 131077, 7, 262146, 196610, 7, 131072, 196611, 7, 131076, 196612, 7, 131076, 196613, 7, 5, 262144, 7, 262144, 262145, 7, 262145, 262146, 7, 131075, 262147, 7, 0, 262148, 7, 65537, 262149, 7, 196613, 327680, 7, 131072, 327681, 7, 4, 327682, 7, 4, 327683, 7, 5, 393216, 7, 65536, 393217, 7, 196609, 393218, 7, 0, 393219, 7, 5, 458754, 7, 0, 458755, 7, 5, 524290, 7, 131072, 524291, 7, 131077, 589826, 7, 0, 589827, 7, 5, 655362, 7, 131072, 655363, 7, 5, 720898, 7, 0, 720899, 7, 5, 786434, 7, 0, 786435, 7, 5, 851970, 7, 196608, 851971, 7, 65541 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Grass" type="TileMap" parent="Tilemap"]
+use_parent_material = true
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 2, 3, 131073, 3, 3, 458755, 65538, 3, 262146, 65539, 3, 458757, 65540, 3, 393222, 65541, 3, 65539, 131074, 3, 327682, 131075, 3, 458752, 131076, 3, 327685, 131077, 3, 0, 196608, 3, 458758, 196609, 3, 262148, 196610, 3, 458756, 196611, 3, 0, 262144, 3, 393223, 262145, 3, 393221, 262146, 3, 0, 262147, 3, 0, 327682, 3, 131073, 327683, 3, 0, 393218, 3, 0, 393219, 3, 196608, 458754, 3, 0, 458755, 3, 0, 524290, 3, 327682, 524291, 3, 393222, 589826, 3, 393218, 589827, 3, 327683, 655362, 3, 196610, 655363, 3, 131072, 720898, 3, 131073, 720899, 3, 196609 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Walls" type="TileMap" parent="Tilemap"]
+use_parent_material = true
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 2, 2, 2, 3, 2, 3, 65538, 2, 327690, 65539, 2, 65540, 65540, 2, 131075, 65541, 2, 3, 131074, 2, 327690, 131075, 2, 327686, 131076, 2, 327686, 131077, 2, 262153, 196608, 2, 0, 196609, 2, 131077, 196610, 2, 65541, 196611, 2, 4, 196612, 2, 262144, 196613, 2, 65537, 262144, 2, 196618, 262145, 2, 327686, 262146, 2, 327686, 262147, 2, 65545, 327680, 2, 65536, 327681, 2, 262145, 327682, 2, 5, 327683, 2, 65545, 393218, 2, 131082, 393219, 2, 65545, 458754, 2, 262154, 458755, 2, 327689, 524290, 2, 131082, 524291, 2, 262153, 589826, 2, 262154, 589827, 2, 262153, 655362, 2, 262154, 655363, 2, 65545, 720898, 2, 10, 720899, 2, 65545, 786434, 2, 65538, 786435, 2, 65539 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="OverlayLower" type="TileMap" parent="Tilemap"]
+use_parent_material = true
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 262148, 5, 131072, 262149, 5, 131073, 327684, 5, 196608, 327685, 5, 196609, 393216, 4, 131072, 393217, 4, 131073, 458752, 4, 196608, 458753, 4, 196609 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="OverlayUpper" type="TileMap" parent="Tilemap"]
+use_parent_material = true
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 196612, 5, 65536, 196613, 5, 1, 327680, 4, 0, 327681, 4, 65537 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Props" type="YSort" parent="."]
+use_parent_material = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Column1" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 96, 221 )
+texture = ExtResource( 2 )
+offset = Vector2( 0, -24 )
+region_enabled = true
+region_rect = Rect2( 0, 19, 32, 77 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Props/Column1"]
+collision_layer = 16
+collision_mask = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Props/Column1/StaticBody2D"]
+position = Vector2( 0, 1.5 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Column2" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 97, 356 )
+texture = ExtResource( 2 )
+offset = Vector2( 0, -24 )
+region_enabled = true
+region_rect = Rect2( 0, 19, 32, 77 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Props/Column2"]
+collision_layer = 16
+collision_mask = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Props/Column2/StaticBody2D"]
+position = Vector2( 0, 1.5 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Bush" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 22, 124 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, -16 )
+region_enabled = true
+region_rect = Rect2( 140, 80, 40, 35 )
+
+[node name="Grass1" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 97, 58 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 44, 107, 10, 10 )
+
+[node name="Grass2" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 126, 77 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 8, 10, 17, 9 )
+
+[node name="Grass3" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 177, 98 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 74, 43, 13, 9 )
+
+[node name="Grass4" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 178, 178 )
+texture = ExtResource( 4 )
+flip_h = true
+region_enabled = true
+region_rect = Rect2( 72, 75, 13, 10 )
+
+[node name="Grass5" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 57, 254 )
+scale = Vector2( 0.961538, 1 )
+texture = ExtResource( 4 )
+flip_h = true
+region_enabled = true
+region_rect = Rect2( 71, 75, 14, 10 )
+
+[node name="Grass6" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 21, 248 )
+scale = Vector2( 0.961538, 1 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 8, 10, 17, 9 )
+
+[node name="Grass7" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 89, 232 )
+scale = Vector2( 0.961538, 1 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 41, 74, 12, 10 )
+
+[node name="Grass8" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 111, 367 )
+scale = Vector2( 0.961538, 1 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 8, 10, 17, 9 )
+
+[connection signal="mouse_entered" from="SelectionArea" to="." method="_on_SelectionArea_mouse_entered"]
+[connection signal="mouse_exited" from="SelectionArea" to="." method="_on_SelectionArea_mouse_exited"]
+[connection signal="area_entered" from="CollisionArea" to="." method="_on_CollisionArea_area_entered"]
+[connection signal="area_exited" from="CollisionArea" to="." method="_on_CollisionArea_area_exited"]
