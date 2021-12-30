@@ -1,0 +1,305 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://tilesets/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://props/color_tint_shader.tres" type="Shader" id=2]
+[ext_resource path="res://props/textures/well.png" type="Texture" id=3]
+[ext_resource path="res://props/textures/grass.png" type="Texture" id=4]
+[ext_resource path="res://props/textures/broken_bricks.png" type="Texture" id=5]
+[ext_resource path="res://props/textures/bush.png" type="Texture" id=6]
+[ext_resource path="res://props/textures/columns.png" type="Texture" id=7]
+[ext_resource path="res://map_pieces/map_piece.gd" type="Script" id=8]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/color_multiplier = Plane( 1, 1, 1, 1 )
+shader_param/color_additive = Plane( 0, 0, 0, 0 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 13.5 )
+
+[node name="MapPiece5" type="YSort"]
+material = SubResource( 1 )
+script = ExtResource( 8 )
+tilemap_size = Vector2( 15, 13 )
+
+[node name="SelectionArea" type="Area2D" parent="."]
+collision_mask = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SelectionArea"]
+polygon = PoolVector2Array( 0, 0, 0, 384, 32, 384, 32, 416, 96, 416, 96, 384, 480, 384, 480, 256, 128, 256, 128, 192, 64, 192, 64, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionArea"]
+polygon = PoolVector2Array( 8, 72, 8, 376, 40, 376, 40, 408, 88, 408, 88, 376, 232, 376, 232, 392, 248, 392, 248, 376, 360, 376, 360, 392, 408, 392, 408, 376, 472, 376, 472, 328, 120, 328, 120, 264, 56, 264, 56, 72 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Tilemap" type="Node2D" parent="."]
+use_parent_material = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="WallsLower" type="TileMap" parent="Tilemap"]
+use_parent_material = true
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 65536, 7, 262144, 65537, 7, 262146, 131072, 7, 0, 131073, 7, 131077, 196608, 7, 0, 196609, 7, 131077, 262144, 7, 131072, 262145, 7, 131077, 327680, 7, 131072, 327681, 7, 131077, 393216, 7, 131072, 393217, 7, 5, 458752, 7, 0, 458753, 7, 2, 458754, 7, 262145, 458755, 7, 262146, 524288, 7, 0, 524289, 7, 131076, 524290, 7, 4, 524291, 7, 131077, 589824, 7, 131072, 589825, 7, 4, 589826, 7, 131076, 589827, 7, 131074, 589828, 7, 262145, 589829, 7, 262145, 589830, 7, 262145, 589831, 7, 262145, 589832, 7, 262145, 589833, 7, 262145, 589834, 7, 262145, 589835, 7, 262145, 589836, 7, 262145, 589837, 7, 262145, 589838, 7, 262146, 655360, 7, 131072, 655361, 7, 131076, 655362, 7, 1, 655363, 7, 131073, 655364, 7, 1, 655365, 7, 1, 655366, 7, 131073, 655367, 7, 4, 655368, 7, 1, 655369, 7, 4, 655370, 7, 4, 655371, 7, 1, 655372, 7, 4, 655373, 7, 4, 655374, 7, 5, 720896, 7, 65536, 720897, 7, 196612, 720898, 7, 65537, 720899, 7, 65539, 720900, 7, 65537, 720901, 7, 196612, 720902, 7, 65540, 720903, 7, 65539, 720904, 7, 196609, 720905, 7, 65538, 720906, 7, 65537, 720907, 7, 196609, 720908, 7, 196609, 720909, 7, 196612, 720910, 7, 65541 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Grass" type="TileMap" parent="Tilemap"]
+use_parent_material = true
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 0, 3, 393221, 1, 3, 458755, 65536, 3, 131072, 65537, 3, 327683, 131072, 3, 262146, 131073, 3, 393220, 196608, 3, 262146, 196609, 3, 458755, 262144, 3, 393221, 262145, 3, 0, 327680, 3, 196608, 327681, 3, 65537, 393216, 3, 393223, 393217, 3, 458755, 393218, 3, 131073, 393219, 3, 393222, 458752, 3, 393218, 458753, 3, 393219, 458754, 3, 0, 458755, 3, 0, 524288, 3, 0, 524289, 3, 327681, 524290, 3, 458756, 524291, 3, 393220, 524292, 3, 262148, 524293, 3, 262149, 524294, 3, 262149, 524295, 3, 262151, 524296, 3, 0, 524297, 3, 0, 524298, 3, 0, 524299, 3, 262150, 524300, 3, 0, 524301, 3, 0, 524302, 3, 0, 589824, 3, 7, 589825, 3, 327685, 589826, 3, 196615, 589827, 3, 393221, 589828, 3, 327684, 589829, 3, 393221, 589830, 3, 327686, 589831, 3, 393220, 589832, 3, 393220, 589833, 3, 196608, 589834, 3, 0, 589835, 3, 196609, 589836, 3, 393221, 589837, 3, 196608, 589838, 3, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Walls" type="TileMap" parent="Tilemap"]
+use_parent_material = true
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 0, 2, 2, 1, 2, 3, 65536, 2, 10, 65537, 2, 131081, 131072, 2, 131082, 131073, 2, 327689, 196608, 2, 65546, 196609, 2, 131081, 262144, 2, 65546, 262145, 2, 196617, 327680, 2, 131082, 327681, 2, 65545, 393216, 2, 131082, 393217, 2, 65540, 393218, 2, 131075, 393219, 2, 3, 458752, 2, 10, 458753, 2, 327686, 458754, 2, 327686, 458755, 2, 262153, 524288, 2, 196618, 524289, 2, 327686, 524290, 2, 327686, 524291, 2, 65540, 524292, 2, 131074, 524293, 2, 131072, 524294, 2, 131075, 524295, 2, 131078, 524296, 2, 131072, 524297, 2, 131072, 524298, 2, 131078, 524299, 2, 131077, 524300, 2, 131077, 524301, 2, 131072, 524302, 2, 3, 589824, 2, 262154, 589825, 2, 327686, 589826, 2, 327686, 589827, 2, 327686, 589828, 2, 327686, 589829, 2, 327686, 589830, 2, 327686, 589831, 2, 327686, 589832, 2, 327686, 589833, 2, 327686, 589834, 2, 327686, 589835, 2, 327686, 589836, 2, 327686, 589837, 2, 327686, 589838, 2, 327689, 655360, 2, 65538, 655361, 2, 262145, 655362, 2, 196613, 655363, 2, 196616, 655364, 2, 196611, 655365, 2, 196608, 655366, 2, 262145, 655367, 2, 196611, 655368, 2, 196609, 655369, 2, 196612, 655370, 2, 262146, 655371, 2, 262145, 655372, 2, 196609, 655373, 2, 262146, 655374, 2, 65537 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="OverlayUpper" type="TileMap" parent="Tilemap"]
+use_parent_material = true
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 655361, 5, 65536, 655362, 5, 65537, 655371, 6, 0, 655372, 6, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="OverlayLower" type="TileMap" parent="Tilemap"]
+use_parent_material = true
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 655367, 1, 0, 720897, 5, 131072, 720898, 5, 131073, 720903, 1, 65536, 720907, 6, 65536, 720908, 6, 65537, 786433, 5, 196608, 786434, 5, 196609 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Props" type="YSort" parent="."]
+use_parent_material = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Well" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 80, 245 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, -16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Props/Well"]
+collision_layer = 512
+collision_mask = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Props/Well/StaticBody2D"]
+polygon = PoolVector2Array( 0, 9, -20, 4, -28, -5, -28, -16, -11, -28, 12, -28, 26, -14, 26, -4, 13, 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Grass1" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 73, 250 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 41, 10, 16, 10 )
+
+[node name="Grass2" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 89, 216 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 76, 109, 8, 8 )
+
+[node name="Grass3" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 66, 198 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 74, 43, 13, 9 )
+
+[node name="Brick1" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 22, 286 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 35, 8, 19, 16 )
+
+[node name="Grass4" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 22, 291 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 44, 107, 10, 10 )
+
+[node name="Grass5" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 82, 322 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 73, 10, 15, 10 )
+
+[node name="Grass6" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 79, 406 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 73, 10, 15, 10 )
+
+[node name="Grass7" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 61, 366 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 11, 107, 10, 10 )
+
+[node name="Grass8" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 205, 261 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 41, 10, 16, 10 )
+
+[node name="Grass9" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 289, 262 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 9, 75, 12, 8 )
+
+[node name="Bush1" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 290, 315 )
+texture = ExtResource( 6 )
+offset = Vector2( 0, -12 )
+region_enabled = true
+region_rect = Rect2( 141, 15, 38, 32 )
+
+[node name="Column1" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 318, 283 )
+texture = ExtResource( 7 )
+offset = Vector2( 0, -16 )
+region_enabled = true
+region_rect = Rect2( 0, 19, 32, 77 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Props/Column1"]
+collision_layer = 512
+collision_mask = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Props/Column1/StaticBody2D"]
+position = Vector2( 0, 8.5 )
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Column2" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 439, 283 )
+texture = ExtResource( 7 )
+offset = Vector2( 0, -16 )
+region_enabled = true
+region_rect = Rect2( 32, 19, 32, 77 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Props/Column2"]
+collision_layer = 512
+collision_mask = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Props/Column2/StaticBody2D"]
+position = Vector2( 0, 8.5 )
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Grass10" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 337, 304 )
+texture = ExtResource( 4 )
+flip_h = true
+region_enabled = true
+region_rect = Rect2( 106, 75, 12, 9 )
+
+[node name="Bush2" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 384, 313 )
+texture = ExtResource( 6 )
+offset = Vector2( 0, -8 )
+region_enabled = true
+region_rect = Rect2( 21, 22, 22, 19 )
+
+[node name="Bush3" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 419, 278 )
+texture = ExtResource( 6 )
+offset = Vector2( 0, -12 )
+region_enabled = true
+region_rect = Rect2( 140, 80, 40, 35 )
+
+[node name="Bush4" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 458, 282 )
+texture = ExtResource( 6 )
+offset = Vector2( 0, -12 )
+region_enabled = true
+region_rect = Rect2( 81, 21, 27, 25 )
+
+[node name="Grass11" type="Sprite" parent="Props"]
+use_parent_material = true
+position = Vector2( 432, 304 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 74, 43, 13, 9 )
+
+[connection signal="mouse_entered" from="SelectionArea" to="." method="_on_SelectionArea_mouse_entered"]
+[connection signal="mouse_exited" from="SelectionArea" to="." method="_on_SelectionArea_mouse_exited"]
+[connection signal="area_entered" from="CollisionArea" to="." method="_on_CollisionArea_area_entered"]
+[connection signal="area_exited" from="CollisionArea" to="." method="_on_CollisionArea_area_exited"]
