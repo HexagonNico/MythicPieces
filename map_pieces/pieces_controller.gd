@@ -26,13 +26,9 @@ func _ready():
 
 # Temporary
 func _input(event):
-	if event.is_pressed() and event.is_action("pieces_mode"):
-		if not self.moving:
-			self.activate_pieces()
-			self.moving = true
-		else:
-			self.deactivate_pieces()
-			self.moving = false
+	if self.moving and event.is_pressed() and event.is_action("pieces_mode"):
+		self.deactivate_pieces()
+		self.moving = false
 
 
 func activate_pieces():
@@ -59,3 +55,8 @@ func copy_tilemap():
 	for piece in self.get_children():
 		if piece is MapPiece:
 			piece.copy_overlay_tilemap(self.walls_border_tilemap, self.lower_walls_tilemap)
+
+
+func _on_Altar_activate():
+	self.activate_pieces()
+	self.moving = true

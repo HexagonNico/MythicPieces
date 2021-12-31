@@ -300,4 +300,7 @@ __meta__ = {
 [connection signal="body_exited" from="Layer2/MapPieces/MapPiece4/LayerTrigger" to="Layer2/MapPieces/MapPiece4/LayerTrigger" method="_on_LayerTrigger_body_exited"]
 [connection signal="body_exited" from="Layer2/MapPieces/MapPiece4/LayerTrigger2" to="Layer2/MapPieces/MapPiece4/LayerTrigger2" method="_on_LayerTrigger_body_exited"]
 [connection signal="body_exited" from="Layer2/MapPieces/MapPiece5/LayerTrigger2" to="Layer2/MapPieces/MapPiece5/LayerTrigger2" method="_on_LayerTrigger_body_exited"]
+[connection signal="activate" from="Layer2/MapPieces/AltarMapPiece/Props/Altar" to="Layer2/MapPieces" method="_on_Altar_activate"]
 [connection signal="body_exited" from="Layer2/MapPieces/AltarMapPiece/LayerTrigger2" to="Layer2/MapPieces/AltarMapPiece/LayerTrigger2" method="_on_LayerTrigger_body_exited"]
+
+[editable path="Layer2/MapPieces/AltarMapPiece"]
