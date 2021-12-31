@@ -10,12 +10,14 @@ extents = Vector2( 13.5, 10 )
 
 [node name="Altar" type="Sprite"]
 texture = ExtResource( 1 )
+offset = Vector2( 0, 32 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Grass" type="Node2D" parent="."]
+position = Vector2( 0, 32 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -52,6 +54,7 @@ region_enabled = true
 region_rect = Rect2( 64, 96, 32, 32 )
 
 [node name="Runes" type="Node2D" parent="."]
+position = Vector2( 0, 32 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -81,6 +84,9 @@ region_enabled = true
 region_rect = Rect2( 8, 8, 8, 8 )
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 0, 32 )
+collision_layer = 8
+collision_mask = 0
 __meta__ = {
 "_edit_lock_": true
 }
@@ -89,5 +95,5 @@ __meta__ = {
 position = Vector2( 0.5, 0 )
 shape = SubResource( 1 )
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
-[connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

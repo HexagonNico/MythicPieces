@@ -16,6 +16,7 @@ func _ready():
 	for rune in runes:
 		rune.modulate = Color(1.0, 1.0, 1.0, 0.0)
 
+
 # Called every frame
 func _process(delta: float):
 	self.current_color = lerp(self.current_color, self.target_color, self.lerp_speed * delta)
@@ -23,11 +24,9 @@ func _process(delta: float):
 		rune.modulate = self.current_color
 
 
-# Receives signal from Area2D
-func _on_area_entered(_area: Area2D):
+func _on_Area2D_body_entered(_body):
 	self.target_color = Color(1.0, 1.0, 1.0, 1.0)
 
 
-# Receives signal from Area2D
-func _on_area_exited(_area: Area2D):
+func _on_Area2D_body_exited(_body):
 	self.target_color = Color(1.0, 1.0, 1.0, 0.0)

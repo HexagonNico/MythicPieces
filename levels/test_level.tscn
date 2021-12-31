@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scripts/clear_tilemap.gd" type="Script" id=1]
 [ext_resource path="res://map_pieces/map_piece.tscn" type="PackedScene" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://props/scenes/bench_left.tscn" type="PackedScene" id=20]
 [ext_resource path="res://props/scenes/bench_right.tscn" type="PackedScene" id=21]
 [ext_resource path="res://props/scenes/tree3.tscn" type="PackedScene" id=22]
+[ext_resource path="res://map_pieces/map_piece_altar.tscn" type="PackedScene" id=23]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 4 )
@@ -271,6 +272,25 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="AltarMapPiece" parent="Layer2/MapPieces" instance=ExtResource( 23 )]
+position = Vector2( 416, 96 )
+selection_color = Color( 0.172549, 0.0941176, 0, 1 )
+immovable = true
+
+[node name="LayerTrigger2" type="Area2D" parent="Layer2/MapPieces/AltarMapPiece"]
+position = Vector2( 96, 152 )
+collision_layer = 8
+collision_mask = 0
+script = ExtResource( 6 )
+upper_layer_y_sort_path = NodePath("../../..")
+lower_layer_y_sort_path = NodePath("../../../../Layer1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Layer2/MapPieces/AltarMapPiece/LayerTrigger2"]
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [connection signal="activate" from="Layer2/MapPieces" to="Layer1/WallsUpper" method="clear"]
 [connection signal="activate" from="Layer2/MapPieces" to="Layer1/Player" method="_on_MapPieces_activate"]
 [connection signal="activate" from="Layer2/MapPieces" to="Layer2/Grass" method="clear"]
@@ -280,3 +300,4 @@ __meta__ = {
 [connection signal="body_exited" from="Layer2/MapPieces/MapPiece4/LayerTrigger" to="Layer2/MapPieces/MapPiece4/LayerTrigger" method="_on_LayerTrigger_body_exited"]
 [connection signal="body_exited" from="Layer2/MapPieces/MapPiece4/LayerTrigger2" to="Layer2/MapPieces/MapPiece4/LayerTrigger2" method="_on_LayerTrigger_body_exited"]
 [connection signal="body_exited" from="Layer2/MapPieces/MapPiece5/LayerTrigger2" to="Layer2/MapPieces/MapPiece5/LayerTrigger2" method="_on_LayerTrigger_body_exited"]
+[connection signal="body_exited" from="Layer2/MapPieces/AltarMapPiece/LayerTrigger2" to="Layer2/MapPieces/AltarMapPiece/LayerTrigger2" method="_on_LayerTrigger_body_exited"]

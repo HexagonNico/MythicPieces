@@ -13,6 +13,7 @@ enum Status {
 export var selection_color: Color = Color(0.15, 0.15, 0.15, 1)
 export var error_color: Color = Color(0.2, 0.0, 0.0, 1)
 export var tilemap_size: Vector2
+export var immovable: bool
 
 # Variables
 var enabled: bool = false
@@ -40,7 +41,7 @@ func _process(_delta: float):
 
 # Called at every input event
 func _input(event: InputEvent):
-	if self.enabled and event.is_action("select_map_piece"):
+	if self.enabled and not self.immovable and event.is_action("select_map_piece"):
 		if event.is_pressed():
 			if self.status == Status.SELECTED:
 				self.status = Status.DRAGGING
