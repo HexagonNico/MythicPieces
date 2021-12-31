@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scripts/clear_tilemap.gd" type="Script" id=1]
 [ext_resource path="res://map_pieces/map_piece.tscn" type="PackedScene" id=2]
@@ -15,6 +15,13 @@
 [ext_resource path="res://props/scenes/lantern.tscn" type="PackedScene" id=13]
 [ext_resource path="res://props/scenes/bench.tscn" type="PackedScene" id=14]
 [ext_resource path="res://props/scenes/tombstone1.tscn" type="PackedScene" id=15]
+[ext_resource path="res://props/scenes/tombstone3.tscn" type="PackedScene" id=16]
+[ext_resource path="res://props/scenes/tombstone2.tscn" type="PackedScene" id=17]
+[ext_resource path="res://props/scenes/grave.tscn" type="PackedScene" id=18]
+[ext_resource path="res://props/scenes/tree2.tscn" type="PackedScene" id=19]
+[ext_resource path="res://props/scenes/bench_left.tscn" type="PackedScene" id=20]
+[ext_resource path="res://props/scenes/bench_right.tscn" type="PackedScene" id=21]
+[ext_resource path="res://props/scenes/tree3.tscn" type="PackedScene" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 4 )
@@ -79,7 +86,7 @@ __meta__ = {
 tilemap_size = Vector2( 28, 38 )
 
 [node name="Player" parent="Layer1" instance=ExtResource( 4 )]
-position = Vector2( 584, 672 )
+position = Vector2( 512, 1011 )
 collision_mask = 280
 
 [node name="PlayerCamera" type="Camera2D" parent="Layer1/Player"]
@@ -113,6 +120,45 @@ position = Vector2( 808, 1048 )
 
 [node name="Tombstone1" parent="Layer1/Props" instance=ExtResource( 15 )]
 position = Vector2( 592, 1076 )
+
+[node name="Tombstone2" parent="Layer1/Props" instance=ExtResource( 16 )]
+position = Vector2( 556, 1104 )
+
+[node name="Tombstone3" parent="Layer1/Props" instance=ExtResource( 17 )]
+position = Vector2( 656, 1104 )
+
+[node name="Grave" parent="Layer1/Props" instance=ExtResource( 18 )]
+position = Vector2( 794, 939 )
+
+[node name="Tree2" parent="Layer1/Props" instance=ExtResource( 19 )]
+position = Vector2( 403, 878 )
+
+[node name="Bench3" parent="Layer1/Props" instance=ExtResource( 20 )]
+position = Vector2( 631, 697 )
+
+[node name="Bench4" parent="Layer1/Props" instance=ExtResource( 21 )]
+position = Vector2( 842, 659 )
+
+[node name="Lantern3" parent="Layer1/Props" instance=ExtResource( 13 )]
+position = Vector2( 874, 794 )
+
+[node name="Lantern4" parent="Layer1/Props" instance=ExtResource( 13 )]
+position = Vector2( 782, 570 )
+
+[node name="Tree3" parent="Layer1/Props" instance=ExtResource( 19 )]
+position = Vector2( 871, 591 )
+
+[node name="Lantern5" parent="Layer1/Props" instance=ExtResource( 13 )]
+position = Vector2( 714, 312 )
+
+[node name="Lantern6" parent="Layer1/Props" instance=ExtResource( 13 )]
+position = Vector2( 279, 217 )
+
+[node name="Tree4" parent="Layer1/Props" instance=ExtResource( 12 )]
+position = Vector2( 654, 305 )
+
+[node name="Tree5" parent="Layer1/Props" instance=ExtResource( 22 )]
+position = Vector2( 342, 236 )
 
 [node name="Layer2" type="YSort" parent="."]
 __meta__ = {
