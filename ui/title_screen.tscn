@@ -1,64 +1,89 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://ui/textures/button.png" type="Texture" id=1]
 [ext_resource path="res://ui/fonts/monogram-extended.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://ui/title_screen.gd" type="Script" id=3]
+[ext_resource path="res://ui/textures/background.png" type="Texture" id=3]
+[ext_resource path="res://ui/title_screen.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 128
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 64
 font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 14, 46, 14 )
 margin_left = 3.0
 margin_right = 3.0
-margin_top = 9.0
-margin_bottom = 11.0
+margin_top = 3.0
+margin_bottom = 5.0
 
-[sub_resource type="StyleBoxTexture" id=6]
+[sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 28, 46, 14 )
 margin_left = 3.0
 margin_right = 3.0
-margin_top = 11.0
-margin_bottom = 11.0
+margin_top = 3.0
+margin_bottom = 3.0
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 46, 14 )
 margin_left = 3.0
 margin_right = 3.0
-margin_top = 9.0
-margin_bottom = 11.0
+margin_top = 3.0
+margin_bottom = 5.0
 
-[node name="TitleScreen" type="HBoxContainer"]
+[node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-alignment = 1
-script = ExtResource( 3 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -683.0
+margin_top = -297.5
+margin_right = 683.0
+margin_bottom = 297.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 40.0
-margin_right = 760.0
-margin_bottom = 450.0
-custom_constants/separation = 30
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 50
 alignment = 1
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Label" type="Label" parent="VBoxContainer"]
-margin_top = 46.0
-margin_right = 720.0
-margin_bottom = 150.0
+[node name="TitleContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 38.0
+margin_right = 800.0
+margin_bottom = 142.0
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="VBoxContainer/TitleContainer"]
+margin_left = 40.0
+margin_right = 760.0
+margin_bottom = 104.0
 custom_fonts/font = SubResource( 1 )
 text = "Title goes here"
 __meta__ = {
@@ -66,78 +91,80 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 180.0
-margin_right = 720.0
-margin_bottom = 404.0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
-margin_right = 720.0
-margin_bottom = 72.0
+margin_top = 192.0
+margin_right = 800.0
+margin_bottom = 412.0
+custom_constants/separation = 20
 alignment = 1
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="ButtonPlay" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 309.0
-margin_right = 411.0
-margin_bottom = 72.0
-custom_fonts/font = SubResource( 3 )
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/normal = SubResource( 4 )
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+margin_right = 800.0
+margin_bottom = 60.0
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Button" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 349.0
+margin_right = 451.0
+margin_bottom = 60.0
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 3 )
 text = "Play"
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
-margin_top = 76.0
-margin_right = 720.0
-margin_bottom = 148.0
+margin_top = 80.0
+margin_right = 800.0
+margin_bottom = 140.0
 alignment = 1
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="ButtonCredits" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
-margin_left = 273.0
-margin_right = 447.0
-margin_bottom = 72.0
-custom_fonts/font = SubResource( 3 )
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/normal = SubResource( 4 )
+[node name="Button" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 313.0
+margin_right = 487.0
+margin_bottom = 60.0
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 3 )
 text = "Credits"
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
-margin_top = 152.0
-margin_right = 720.0
-margin_bottom = 224.0
+margin_top = 160.0
+margin_right = 800.0
+margin_bottom = 220.0
 alignment = 1
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="ButtonQuit" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer3"]
-margin_left = 309.0
-margin_right = 411.0
-margin_bottom = 72.0
-custom_fonts/font = SubResource( 3 )
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/normal = SubResource( 4 )
+[node name="Button" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 349.0
+margin_right = 451.0
+margin_bottom = 60.0
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 3 )
 text = "Quit"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer/ButtonPlay" to="." method="button_play"]
-[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer2/ButtonCredits" to="." method="button_credits"]
-[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer3/ButtonQuit" to="." method="button_quit"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer/Button" to="." method="button_play"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer2/Button" to="." method="button_credits"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer3/Button" to="." method="button_quit"]

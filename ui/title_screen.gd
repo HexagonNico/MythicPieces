@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends Node
 
 
 # Exported variables
