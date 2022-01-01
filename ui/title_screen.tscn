@@ -1,0 +1,143 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://ui/textures/button.png" type="Texture" id=1]
+[ext_resource path="res://ui/fonts/monogram-extended.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://ui/title_screen.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 128
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 64
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 14, 46, 14 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 9.0
+margin_bottom = 11.0
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 28, 46, 14 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 11.0
+margin_bottom = 11.0
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 46, 14 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 9.0
+margin_bottom = 11.0
+
+[node name="TitleScreen" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 40.0
+margin_right = 760.0
+margin_bottom = 450.0
+custom_constants/separation = 30
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_top = 46.0
+margin_right = 720.0
+margin_bottom = 150.0
+custom_fonts/font = SubResource( 1 )
+text = "Title goes here"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 180.0
+margin_right = 720.0
+margin_bottom = 404.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+margin_right = 720.0
+margin_bottom = 72.0
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ButtonPlay" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 309.0
+margin_right = 411.0
+margin_bottom = 72.0
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 4 )
+text = "Play"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+margin_top = 76.0
+margin_right = 720.0
+margin_bottom = 148.0
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ButtonCredits" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 273.0
+margin_right = 447.0
+margin_bottom = 72.0
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 4 )
+text = "Credits"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+margin_top = 152.0
+margin_right = 720.0
+margin_bottom = 224.0
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ButtonQuit" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 309.0
+margin_right = 411.0
+margin_bottom = 72.0
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 4 )
+text = "Quit"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer/ButtonPlay" to="." method="button_play"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer2/ButtonCredits" to="." method="button_credits"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer3/ButtonQuit" to="." method="button_quit"]
