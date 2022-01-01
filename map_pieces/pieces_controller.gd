@@ -22,6 +22,9 @@ var moving: bool = false
 
 func _ready():
 	self.deactivate_pieces()
+	for piece in self.get_children():
+		if piece is MapPiece:
+			piece.drag_limit = self.tilemap_size
 
 
 # Temporary

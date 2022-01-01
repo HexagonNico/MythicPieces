@@ -20,7 +20,7 @@ var enabled: bool = false
 var status = Status.DEFAULT
 var drag_delta: Vector2 = Vector2(0, 0)
 var position_before: Vector2 = Vector2(0, 0)
-
+var drag_limit: Vector2
 
 # Called every frame
 func _process(_delta: float):
@@ -29,6 +29,8 @@ func _process(_delta: float):
 		var mouse_pos: Vector2 = self.get_viewport().get_mouse_position()
 		var unmodulated: Vector2 = mouse_pos - self.drag_delta
 		self.position = Vector2(round(unmodulated.x / 32) * 32, round(unmodulated.y / 32) * 32)
+		self.position.x = clamp(self.position.x, 0.0, (self.drag_limit.x - self.tilemap_size.x) * 32)
+		self.position.y = clamp(self.position.y, 0.0, (self.drag_limit.y - self.tilemap_size.y) * 32)
 	
 	# Color tint
 	var color_tint: Color = Color(0.0, 0.0, 0.0, 0.0)
