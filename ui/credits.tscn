@@ -1,0 +1,145 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://ui/fonts/monogram-extended.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://ui/textures/button.png" type="Texture" id=2]
+[ext_resource path="res://ui/credits.gd" type="Script" id=3]
+[ext_resource path="res://ui/textures/background.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 48
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 14, 46, 14 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 28, 46, 14 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 46, 14 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 5.0
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -683.0
+margin_top = -297.5
+margin_right = 683.0
+margin_bottom = 297.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 50
+alignment = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TitleContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 69.0
+margin_right = 800.0
+margin_bottom = 121.0
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="VBoxContainer/TitleContainer"]
+margin_left = 136.0
+margin_right = 664.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 1 )
+text = "Created by HexagonNico"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CreditsContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 171.0
+margin_right = 800.0
+margin_bottom = 284.0
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Credits" type="Label" parent="VBoxContainer/CreditsContainer"]
+margin_left = 112.0
+margin_right = 688.0
+margin_bottom = 113.0
+custom_fonts/font = SubResource( 2 )
+text = "Assets Used:
+  Pixel Art Top Down - Basic (by Cainos)
+  8-direction Top Down Character (by Gamekrazzy)
+  monogram (by Datagoblin)"
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ButtonContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 334.0
+margin_right = 800.0
+margin_bottom = 381.0
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Button" type="Button" parent="VBoxContainer/ButtonContainer"]
+margin_left = 361.0
+margin_right = 439.0
+margin_bottom = 47.0
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+text = "Back"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="pressed" from="VBoxContainer/ButtonContainer/Button" to="." method="back_button"]

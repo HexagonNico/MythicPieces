@@ -27,9 +27,8 @@ func _ready():
 			piece.drag_limit = self.tilemap_size
 
 
-# Temporary
 func _input(event):
-	if self.moving and event.is_pressed() and event.is_action("pieces_mode"):
+	if self.moving and event.is_pressed() and event.is_action("ui_cancel"):
 		self.deactivate_pieces()
 		self.moving = false
 

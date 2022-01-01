@@ -33,6 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Fitting In"
+run/main_scene="res://ui/title_screen.tscn"
 config/icon="res://icon.png"
 
 [display]

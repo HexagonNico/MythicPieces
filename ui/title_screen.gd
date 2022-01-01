@@ -1,12 +1,17 @@
 extends HBoxContainer
 
 
+# Exported variables
+export var level_1_scene: String = "res://levels/test_level.tscn"
+export var credits_scene: String = "res://ui/credits.tscn"
+
+
 func button_play():
-	print("Play")
+	self.get_tree().change_scene(self.level_1_scene)
 
 
 func button_credits():
-	print("Credits")
+	self.get_tree().change_scene(self.credits_scene)
 
 
 func button_quit():
