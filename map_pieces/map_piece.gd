@@ -22,6 +22,7 @@ var drag_delta: Vector2 = Vector2(0, 0)
 var position_before: Vector2 = Vector2(0, 0)
 var drag_limit: Vector2
 
+
 # Called every frame
 func _process(_delta: float):
 	# Dragging

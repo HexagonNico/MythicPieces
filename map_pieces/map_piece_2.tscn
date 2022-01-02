@@ -133,7 +133,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 32, 96 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Props/Column1"]
-collision_layer = 16
+collision_layer = 512
 collision_mask = 0
 __meta__ = {
 "_edit_lock_": true
@@ -155,7 +155,7 @@ region_enabled = true
 region_rect = Rect2( 32, 32, 32, 64 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Props/Column2"]
-collision_layer = 16
+collision_layer = 512
 collision_mask = 0
 __meta__ = {
 "_edit_lock_": true

@@ -2,7 +2,7 @@ extends Node
 
 
 # Exported variables
-export var level_1_scene: String = "res://levels/test_level.tscn"
+export var level_1_scene: String = "res://levels/tutorial_level.tscn"
 export var credits_scene: String = "res://ui/credits.tscn"
 
 
