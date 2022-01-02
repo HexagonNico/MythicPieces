@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://tilesets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scripts/layer_trigger.gd" type="Script" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=21]
 [ext_resource path="res://props/scenes/lantern.tscn" type="PackedScene" id=22]
 [ext_resource path="res://map_pieces/map_piece_arch.tscn" type="PackedScene" id=23]
+[ext_resource path="res://ui/pieces_mode_hud.tscn" type="PackedScene" id=24]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 4 )
@@ -286,11 +287,17 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PiecesModeHUD" parent="CanvasLayer" instance=ExtResource( 24 )]
+
 [connection signal="activate" from="Layer2/MapPieces" to="Layer1/WallsUpper" method="clear"]
 [connection signal="activate" from="Layer2/MapPieces" to="Layer1/Player" method="_on_MapPieces_activate"]
 [connection signal="activate" from="Layer2/MapPieces" to="Layer2/Grass" method="clear"]
 [connection signal="activate" from="Layer2/MapPieces" to="Layer2/WallsBorder" method="clear"]
+[connection signal="activate" from="Layer2/MapPieces" to="CanvasLayer/PiecesModeHUD" method="make_visible"]
 [connection signal="deactivate" from="Layer2/MapPieces" to="Layer1/Player" method="_on_MapPieces_deactivate"]
+[connection signal="deactivate" from="Layer2/MapPieces" to="CanvasLayer/PiecesModeHUD" method="make_invisible"]
 [connection signal="body_exited" from="Layer2/MapPieces/MapPiece2/LayerTrigger" to="Layer2/MapPieces/MapPiece2/LayerTrigger" method="_on_LayerTrigger_body_exited"]
 [connection signal="body_exited" from="Layer2/MapPieces/MapPiece4/LayerTrigger" to="Layer2/MapPieces/MapPiece4/LayerTrigger" method="_on_LayerTrigger_body_exited"]
 [connection signal="body_exited" from="Layer2/MapPieces/MapPiece4/LayerTrigger2" to="Layer2/MapPieces/MapPiece4/LayerTrigger2" method="_on_LayerTrigger_body_exited"]
