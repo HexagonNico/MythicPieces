@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/clear_tilemap.gd" type="Script" id=1]
 [ext_resource path="res://map_pieces/map_piece.tscn" type="PackedScene" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://map_pieces/pieces_controller.gd" type="Script" id=5]
 [ext_resource path="res://scripts/layer_trigger.gd" type="Script" id=6]
+[ext_resource path="res://map_pieces/map_piece_3.tscn" type="PackedScene" id=7]
+[ext_resource path="res://map_pieces/map_piece_6.tscn" type="PackedScene" id=8]
+[ext_resource path="res://map_pieces/map_piece_7.tscn" type="PackedScene" id=9]
 [ext_resource path="res://tilesets/tileset.tres" type="TileSet" id=11]
 [ext_resource path="res://map_pieces/map_piece_altar.tscn" type="PackedScene" id=23]
 
@@ -47,7 +50,7 @@ __meta__ = {
 tilemap_size = Vector2( 26, 17 )
 
 [node name="Player" parent="Layer1" instance=ExtResource( 4 )]
-position = Vector2( 184, 192 )
+position = Vector2( 128, 272 )
 collision_mask = 280
 
 [node name="PlayerCamera" type="Camera2D" parent="Layer1/Player"]
@@ -118,19 +121,27 @@ __meta__ = {
 }
 
 [node name="MapPiece" parent="Layer2/MapPieces" instance=ExtResource( 2 )]
-position = Vector2( 640, 96 )
+position = Vector2( 512, 0 )
+
+[node name="MapPiece3" parent="Layer2/MapPieces" instance=ExtResource( 7 )]
+position = Vector2( 160, 192 )
+
+[node name="MapPiece6" parent="Layer2/MapPieces" instance=ExtResource( 8 )]
+position = Vector2( 544, 160 )
+
+[node name="MapPiece7" parent="Layer2/MapPieces" instance=ExtResource( 9 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PiecesModeHUD" parent="CanvasLayer" instance=ExtResource( 3 )]
 
-[connection signal="activate" from="Layer2/MapPieces" to="CanvasLayer/PiecesModeHUD" method="make_visible"]
 [connection signal="activate" from="Layer2/MapPieces" to="Layer1/Walls" method="clear"]
 [connection signal="activate" from="Layer2/MapPieces" to="Layer1/Player" method="_on_MapPieces_activate"]
 [connection signal="activate" from="Layer2/MapPieces" to="Layer2/Grass" method="clear"]
 [connection signal="activate" from="Layer2/MapPieces" to="Layer2/WallsBorder" method="clear"]
-[connection signal="deactivate" from="Layer2/MapPieces" to="CanvasLayer/PiecesModeHUD" method="make_invisible"]
+[connection signal="activate" from="Layer2/MapPieces" to="CanvasLayer/PiecesModeHUD" method="make_visible"]
 [connection signal="deactivate" from="Layer2/MapPieces" to="Layer1/Player" method="_on_MapPieces_deactivate"]
+[connection signal="deactivate" from="Layer2/MapPieces" to="CanvasLayer/PiecesModeHUD" method="make_invisible"]
 [connection signal="activate" from="Layer2/MapPieces/AltarMapPiece/Props/Altar" to="Layer2/MapPieces" method="_on_Altar_activate"]
 [connection signal="body_exited" from="Layer2/MapPieces/AltarMapPiece/LayerTrigger2" to="Layer2/MapPieces/AltarMapPiece/LayerTrigger2" method="_on_LayerTrigger_body_exited"]
 
