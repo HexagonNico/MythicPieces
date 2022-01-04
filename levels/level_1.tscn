@@ -68,6 +68,7 @@ __meta__ = {
 
 [node name="Statue" parent="Layer1/Props" instance=ExtResource( 10 )]
 position = Vector2( 736, 88 )
+next_level_scene = "res://ui/title_screen.tscn"
 
 [node name="StaticBody2D" parent="Layer1/Props/Statue" index="0"]
 collision_layer = 256
