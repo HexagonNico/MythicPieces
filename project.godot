@@ -32,7 +32,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Fitting In"
+config/name="Mythic Pieces"
 run/main_scene="res://ui/title_screen.tscn"
 config/icon="res://icon.png"
 
@@ -92,5 +92,6 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 environment/default_clear_color=Color( 0.301961, 0.301961, 0.301961, 1 )
 environment/default_environment="res://default_env.tres"

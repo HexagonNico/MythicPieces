@@ -77,9 +77,9 @@ __meta__ = {
 }
 
 [node name="TitleContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 69.0
+margin_top = 54.0
 margin_right = 800.0
-margin_bottom = 121.0
+margin_bottom = 106.0
 alignment = 1
 __meta__ = {
 "_edit_lock_": true
@@ -98,9 +98,9 @@ __meta__ = {
 }
 
 [node name="CreditsContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 171.0
+margin_top = 156.0
 margin_right = 800.0
-margin_bottom = 284.0
+margin_bottom = 298.0
 alignment = 1
 __meta__ = {
 "_edit_lock_": true
@@ -109,21 +109,22 @@ __meta__ = {
 [node name="Credits" type="Label" parent="VBoxContainer/CreditsContainer"]
 margin_left = 112.0
 margin_right = 688.0
-margin_bottom = 113.0
+margin_bottom = 142.0
 custom_fonts/font = SubResource( 2 )
 text = "Assets Used:
   Pixel Art Top Down - Basic (by Cainos)
   8-direction Top Down Character (by Gamekrazzy)
-  monogram (by Datagoblin)"
+  monogram (by Datagoblin)
+  Music: Elysium by Alexander Nakarada"
 valign = 1
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="ButtonContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 334.0
+margin_top = 348.0
 margin_right = 800.0
-margin_bottom = 381.0
+margin_bottom = 395.0
 alignment = 1
 __meta__ = {
 "_edit_lock_": true
