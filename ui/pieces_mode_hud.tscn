@@ -16,17 +16,17 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
-custom_constants/margin_right = 20
-custom_constants/margin_left = 20
-custom_constants/margin_bottom = 20
+custom_constants/margin_right = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_left = 20.0
-margin_right = 780.0
+margin_left = 10.0
+margin_right = 790.0
 margin_bottom = 26.0
 
 [node name="Wasd" type="Label" parent="HBoxContainer"]
@@ -37,14 +37,14 @@ custom_fonts/font = SubResource( 1 )
 text = "WASD / Arrows: move camera"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
-margin_left = 20.0
-margin_right = 780.0
+margin_left = 10.0
+margin_right = 790.0
 margin_bottom = 26.0
 alignment = 2
 
 [node name="Esc" type="Label" parent="HBoxContainer2"]
-margin_left = 652.0
-margin_right = 760.0
+margin_left = 672.0
+margin_right = 780.0
 margin_bottom = 26.0
 grow_horizontal = 0
 grow_vertical = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://tilesets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scripts/layer_trigger.gd" type="Script" id=2]
@@ -26,6 +26,8 @@
 [ext_resource path="res://ui/pieces_mode_hud.tscn" type="PackedScene" id=24]
 [ext_resource path="res://map_pieces/map_piece_tutorial_end.tscn" type="PackedScene" id=25]
 [ext_resource path="res://ui/next_level_hud.tscn" type="PackedScene" id=26]
+[ext_resource path="res://ui/find_altar_hud.tscn" type="PackedScene" id=27]
+[ext_resource path="res://ui/create_path_hud.tscn" type="PackedScene" id=28]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 4 )
@@ -370,6 +372,11 @@ start_visible = false
 [node name="NextLevelHUD" parent="CanvasLayer" instance=ExtResource( 26 )]
 start_visible = false
 
+[node name="FindAltarHUD" parent="CanvasLayer" instance=ExtResource( 27 )]
+
+[node name="CreatePathHUD" parent="CanvasLayer" instance=ExtResource( 28 )]
+start_visible = false
+
 [connection signal="activate" from="Layer2/MapPieces" to="Layer1/WallsUpper" method="clear"]
 [connection signal="activate" from="Layer2/MapPieces" to="Layer1/Player" method="_on_MapPieces_activate"]
 [connection signal="activate" from="Layer2/MapPieces" to="Layer2/Grass" method="clear"]
@@ -383,6 +390,8 @@ start_visible = false
 [connection signal="body_exited" from="Layer2/MapPieces/MapPiece5/LayerTrigger2" to="Layer2/MapPieces/MapPiece5/LayerTrigger2" method="_on_LayerTrigger_body_exited"]
 [connection signal="activate" from="Layer2/MapPieces/AltarMapPiece/Props/Altar" to="Layer2/MapPieces" method="_on_Altar_activate"]
 [connection signal="activate" from="Layer2/MapPieces/AltarMapPiece/Props/Altar" to="Layer3/MapPieces" method="_on_Altar_activate"]
+[connection signal="activate" from="Layer2/MapPieces/AltarMapPiece/Props/Altar" to="CanvasLayer/FindAltarHUD" method="make_invisible"]
+[connection signal="activate" from="Layer2/MapPieces/AltarMapPiece/Props/Altar" to="CanvasLayer/CreatePathHUD" method="make_visible"]
 [connection signal="body_exited" from="Layer2/MapPieces/AltarMapPiece/LayerTrigger2" to="Layer2/MapPieces/AltarMapPiece/LayerTrigger2" method="_on_LayerTrigger_body_exited"]
 [connection signal="enter_area" from="Layer3/MapPieces/MapPieceTutorialEnd/Props/Statue" to="CanvasLayer/NextLevelHUD" method="make_visible"]
 [connection signal="exit_area" from="Layer3/MapPieces/MapPieceTutorialEnd/Props/Statue" to="CanvasLayer/NextLevelHUD" method="make_invisible"]
