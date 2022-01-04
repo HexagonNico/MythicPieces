@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/elysium.mp3-173242eb62c09e75f010824dfdab67e3.mp3str"
+
+[deps]
+
+source_file="res://music/elysium.mp3"
+dest_files=[ "res://.import/elysium.mp3-173242eb62c09e75f010824dfdab67e3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

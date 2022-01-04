@@ -36,6 +36,10 @@ config/name="Fitting In"
 run/main_scene="res://ui/title_screen.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+MusicPlayer="*res://music/music_player.tscn"
+
 [display]
 
 window/size/width=800
